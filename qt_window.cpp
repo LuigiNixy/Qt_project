@@ -20,6 +20,8 @@ Qt_window::Qt_window(QWidget *parent) :
     ui->schedule->setColumnCount(7);
     ui->schedule->setHorizontalHeaderLabels(QStringList()<<"Mon"<<"Tue"<<"Wed"<<"Thu"<<"Fri"<<"Sat"<<"Son");
     ui->schedule->setRowCount(15);
+    ui->schedule->setVerticalHeaderLabels(QStringList()<<"  8:00-9:00"<<"  9:00-10:00"<<"  10:00-11:00"<<"  11:00-12:00"<<"  12:00-13:00"<<"  13:00-14:00"<<"  14:00-15:00"<<"  15:00-16:00"<<"  16:00-17:00"
+                                          <<"  17:00-18:00"<<"  18:00-19:00"<<"  19:00-20:00"<<"  20:00-21:00"<<"  21:00-22:00"<<"  22:00-23:00");
     //如下代码设置横向表格头的间隔线，有四个方向的间隔线,不需要间隔线的可以设置为0px
     ui->schedule->horizontalHeader()->setStyleSheet(
     "QHeaderView::section{"
@@ -55,10 +57,6 @@ Qt_window::Qt_window(QWidget *parent) :
                 "padding:4px;"
             "}"
     );
-//    ui->schedule->setRowHeight();
-    ui->schedule->setVerticalHeaderLabels(QStringList()<<"  8:00-9:00"<<"  9:00-10:00"<<"  10:00-11:00"<<"  11:00-12:00"<<"  12:00-13:00"<<"  13:00-14:00"<<"  14:00-15:00"<<"  15:00-16:00"<<"  16:00-17:00"
-                                          <<"  17:00-18:00"<<"  18:00-19:00"<<"  19:00-20:00"<<"  20:00-21:00"<<"  21:00-22:00"<<"  22:00-23:00");
-//    ui->schedule->resize();
 
 //    connect(ui->pushButton,&QPushButton::clicked,this,&Qwidget)
     //新建任务
