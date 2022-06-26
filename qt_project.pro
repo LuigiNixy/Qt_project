@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         qt_window.cpp \
     task.cpp \
-    newtask.cpp
+    newtask.cpp \
+    tt.cpp
 
 HEADERS  += qt_window.h \
     task.h \
-    newtask.h
+    newtask.h \
+    tt.h
 
 FORMS    += qt_window.ui \
     newtask.ui

@@ -20,6 +20,40 @@ Qt_window::Qt_window(QWidget *parent) :
     ui->schedule->setColumnCount(7);
     ui->schedule->setHorizontalHeaderLabels(QStringList()<<"Mon"<<"Tue"<<"Wed"<<"Thu"<<"Fri"<<"Sat"<<"Son");
     ui->schedule->setRowCount(15);
+    //如下代码设置横向表格头的间隔线，有四个方向的间隔线,不需要间隔线的可以设置为0px
+    ui->schedule->horizontalHeader()->setStyleSheet(
+    "QHeaderView::section{"
+                "border-top:0px solid #E5E5E5;"
+                "border-left:0px solid #E5E5E5;"
+                "border-right:0.5px solid #E5E5E5;"
+                "border-bottom: 0.5px solid #E5E5E5;"
+                "background-color:white;"
+                "padding:4px;"
+            "}"
+    )
+
+    //如下代码设置横向表格头的间隔线，有四个方向的间隔线,不需要间隔线的可以设置为0px
+    ui->schedule->verticalHeader()->setStyleSheet(
+    "QHeaderView::section{"
+                "border-top:0px solid #E5E5E5;"
+                "border-left:0px solid #E5E5E5;"
+                "border-right:0.5px solid #E5E5E5;"
+                "border-bottom: 0.5px solid #E5E5E5;"
+                "background-color:white;"
+                "padding:4px;"
+            "}"
+    )
+
+    //如下代码设置列表左上角第0行第0列的那个格子的边框线
+    ui->schedule->verticalHeader()->setStyleSheet(
+    "QTableCornerButton::section{"
+                "border-top:0px solid #E5E5E5;"
+                "border-left:0px solid #E5E5E5;"
+                "border-right:0.5px solid #E5E5E5;"
+                "border-bottom: 0.5px solid #E5E5E5;"
+                "background-color:white;"
+            "}"
+    )
 //    ui->schedule->setRowHeight();
     ui->schedule->setVerticalHeaderLabels(QStringList()<<"8:00-9:00"<<"9:00-10:00"<<"10:00-11:00"<<"11:00-12:00"<<"12:00-13:00"<<"13:00-14:00"<<"14:00-15:00"<<"15:00-16:00"<<"16:00-17:00"
                                           <<"17:00-18:00"<<"18:00-19:00"<<"19:00-20:00"<<"20:00-21:00"<<"21:00-22:00"<<"22:00-23:00");
