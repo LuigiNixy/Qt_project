@@ -24,6 +24,7 @@ public:
 //    priority_queue<x>
     void addTask(task*);
     void addCourse(course*);
+    map<QString,int> date2num;
     QTimer *myTimer;
     void SetMyAppAutoRun(bool);
 public slots:

@@ -13,10 +13,11 @@ public:
     string courseName;
     int dd;
     QTime startTime;
+    QTime endTime;
     string classroom;
     string teacherName;
     course();
-    course(string,int,QTime,string classroom_="",string teacher="");
+    course(string,int,QTime,QTime,string classroom_="",string teacher="");
 
 };
 

@@ -149,7 +149,24 @@
      </widget>
     </item>
     <item>
-     <widget class="QTimeEdit" name="courseTime"/>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>开始时间</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTimeEdit" name="startTime"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>结束时间</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTimeEdit" name="endTime"/>
     </item>
     <item>
      <spacer name="horizontalSpacer_4">

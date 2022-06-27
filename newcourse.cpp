@@ -10,10 +10,15 @@ newCourse::newCourse(QWidget *parent) :
     ui(new Ui::newCourse)
 {
     ui->setupUi(this);
-    ui->courseTime->setMinimumTime(QTime::fromString("6:00","h:mm"));
+    ui->startTime->setMinimumTime(QTime::fromString("6:00","h:mm"));
+    ui->endTime->setMinimumTime(QTime::fromString("6:00","h:mm"));
     connect(ui->courseCancel,&QPushButton::clicked,this,[=](){
        this->close();
 
+    });
+    connect(ui->startTime,&QTimeEdit::timeChanged,ui->endTime,[=](){
+        ui->endTime->setMinimumTime(ui->startTime->time().addSecs(3600));
+        ui->endTime->setTime(ui->startTime->time());
     });
 
     connect(ui->courseCreate,&QPushButton::clicked,this,[=](){
@@ -29,14 +34,15 @@ newCourse::newCourse(QWidget *parent) :
 
         int courseDate = ui->Dates->currentIndex();
         qDebug()<<courseDate<<endl;
-        QTime courseTime = ui->courseTime->time();
+        QTime startTime = ui->startTime->time();
+        QTime endTime = ui->endTime->time();
 
        Qt_window * prt= (Qt_window*) parentWidget();
 
+        course* tmp = new course(courseName.toStdString(),courseDate,startTime,endTime);
+       prt->todoCourse.push(tmp);
 
-       prt->todoCourse.push(new course(courseName.toStdString(),courseDate,courseTime));
-
-       prt->addCourse((prt->todoCourse.top()));
+       prt->addCourse(tmp);
 
        this->close();
 

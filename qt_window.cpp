@@ -20,7 +20,7 @@ Qt_window::Qt_window(QWidget *parent) :
     SetMyAppAutoRun(1);
 
     //设置表格
-    map<QString,int> date2num;
+
     date2num["Mon"]=1;
     date2num["Tue"]=2;
     date2num["Wed"]=3;
@@ -89,6 +89,15 @@ Qt_window::Qt_window(QWidget *parent) :
 
     });
 
+    connect(ui->schedule,&QTableWidget::doubleClicked,this,[=](){
+        Qt::WindowFlags flags = Qt::Dialog;
+        newCourse *newcourse = new newCourse(this);
+        newcourse->setWindowFlags(flags);
+        newcourse->show();
+    });
+
+//    connect(ui->)
+
     //动态更新时间
     myTimer=new QTimer(this);
     myTimer->start(1000);
@@ -110,9 +119,11 @@ void Qt_window::addTask(task* t){
 
 void Qt_window::addCourse(course * t){
     int x = t->dd;
-    int y = t->startTime.hour();
 
-    ui->schedule->setItem(y-6,x,new QTableWidgetItem(QString::fromStdString(t->courseName+"\n"+t->classroom)));
+    for(int y = t->startTime.hour();y<=t->endTime.hour()-1;y++)
+    ui->schedule->setItem(y-6,x,new QTableWidgetItem(QString::fromStdString(t->courseName+"\n"+t->classroom+
+                                                                                           "\n"+t->teacherName)));
+
 
 }
 
