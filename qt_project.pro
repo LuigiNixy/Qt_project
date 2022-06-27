@@ -16,12 +16,15 @@ SOURCES += main.cpp\
         qt_window.cpp \
     task.cpp \
     newtask.cpp \
-    tt.cpp
+    newcourse.cpp \
+    course.cpp
 
 HEADERS  += qt_window.h \
     task.h \
     newtask.h \
-    tt.h
+    newcourse.h \
+    course.h
 
 FORMS    += qt_window.ui \
-    newtask.ui
+    newtask.ui \
+    newcourse.ui

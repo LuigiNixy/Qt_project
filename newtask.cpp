@@ -9,7 +9,10 @@ newTask::newTask(QWidget *parent) :
     ui(new Ui::newTask)
 {
     ui->setupUi(this);
-
+    ui->dateTimeEdit->setMinimumDate(QDate::currentDate());
+    ui->dateTimeEdit->setMaximumDate(QDate::currentDate().addDays(365));
+    ui->calendarWidget->setMinimumDate(QDate::currentDate());
+    ui->calendarWidget->setMaximumDate(QDate::currentDate().addDays(365));
     //取消按钮
     connect(ui->taskCancel,&QPushButton::clicked,this,[=](){
         this->close();
@@ -41,9 +44,10 @@ newTask::newTask(QWidget *parent) :
         QTime ddl_time_ = ui->dateTimeEdit->time();
 
 //输入问题处理
+        //增加任务到todoList
     Qt_window * prt= (Qt_window*) parentWidget();
 
-        //增加任务到todoList
+
         prt->todoTask.push(new task(task_Name.toStdString(),calenderDate,ddl_time_));
 
         prt->addTask((prt->todoTask.top()));

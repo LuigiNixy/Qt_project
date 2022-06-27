@@ -14,7 +14,7 @@ public:
     task();
     task(char*);
     task(char*,int ,int ,int,int,int);
-    task(string,QDate,QTime);
+    task(string,QDate,QTime,int t=0);
     void setAlarm(bool);
     bool isAlarm;
     string taskName;

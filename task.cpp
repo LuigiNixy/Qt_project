@@ -9,7 +9,7 @@ void task::setAlarm(bool t){
     isAlarm=t;
 }
 
-task::task(string Name_, QDate date_, QTime time_){
+task::task(string Name_, QDate date_, QTime time_,int t){
     taskName= Name_;
     ddl_date =date_;
     ddl_time =time_;

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <task.h>
+#include <course.h>
 #include <bits/stdc++.h>
 #include <QTime>
 #include <QTimer>
@@ -19,7 +20,10 @@ public:
     explicit Qt_window(QWidget *parent = 0);
     ~Qt_window();
     priority_queue<task*> todoTask;
+    priority_queue<course* > todoCourse;
+//    priority_queue<x>
     void addTask(task*);
+    void addCourse(course*);
     QTimer *myTimer;
     void SetMyAppAutoRun(bool);
 public slots:
