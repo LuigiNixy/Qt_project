@@ -2,11 +2,16 @@
 #include "ui_qt_window.h"
 #include "newtask.h"
 #include "newcourse.h"
+#include <newcourse.h>
+#include "qlistwidget.h"
 #include <QMessageBox>
 #include <qdebug.h>
 #include <QDebug>
 #include <QTableWidgetItem>
+#include <Qt>
+#include <QDateTime>
 #include <qsettings.h>
+#include <mylistwidgetitem.h>
 #define AUTO_RUN "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
 
 Qt_window::Qt_window(QWidget *parent) :
@@ -20,6 +25,7 @@ Qt_window::Qt_window(QWidget *parent) :
     SetMyAppAutoRun(1);
 
     //设置表格
+    ui->taskList->setSortingEnabled(true);
 
     date2num["Mon"]=1;
     date2num["Tue"]=2;
@@ -89,9 +95,9 @@ Qt_window::Qt_window(QWidget *parent) :
 
     });
 
-    connect(ui->schedule,&QTableWidget::doubleClicked,this,[=](){
+    connect(ui->schedule,&QTableWidget::cellDoubleClicked,this,[=](int row,int column){
         Qt::WindowFlags flags = Qt::Dialog;
-        newCourse *newcourse = new newCourse(this);
+        newCourse *newcourse = new newCourse(this,row,column);
         newcourse->setWindowFlags(flags);
         newcourse->show();
     });
@@ -111,8 +117,16 @@ Qt_window::~Qt_window()
 }
 
 void Qt_window::addTask(task* t){
+    ui->taskList->setSortingEnabled(true);
 
-    ui->taskList->addItem(QString::fromStdString(t->taskName));
+    myListWidgetItem *item = new myListWidgetItem(t->taskName,QDateTime(t->ddl_date,t->ddl_time));
+    item->setText(QString::fromStdString(t->taskName+"       "+t->ddl_time.toString().toStdString()));
+    item->setData(Qt::UserRole,QDateTime(t->ddl_date,t->ddl_time));
+
+    ui->taskList->addItem(item);
+//    qDebug()<<" "<<(item->taskTime<ui->taskList->item(1)->data(<<endl;
+    ui->taskList->sortItems();
+
 //    qDebug()<<" "<<t->ddl_date.toString()<<" "<<t->ddl_time.toString()<<endl;
     return;
 }
@@ -132,22 +146,35 @@ void Qt_window::getDateTime(){
     QString curDate = QDate::currentDate().toString();
 //    qDebug() <<curTime<<endl;
     if(todoTask.empty()) return;
-    task* tmp = todoTask.top();
+    task* tmp_ = todoTask.top();
+    QListWidgetItem  *tmp = ui->taskList->item(0);
+    while(QDateTime(tmp_->ddl_date,tmp_->ddl_time)<tmp->data(Qt::UserRole).toDateTime()) {
+        todoTask.pop();
+        tmp_ = todoTask.top();
+    }
     if(tmp==NULL) return;
 //    qDebug() <<tmp->ddl_date<<endl;
-    if(curDate!=tmp->ddl_date.toString()) return;
+    if(curDate!=tmp->data(Qt::UserRole).toDateTime().date().toString()) return;
 //    qDebug() <<tmp->ddl_time<<endl;
-    if(curTime!=tmp->ddl_time.toString()) return;
+    if(curTime!=tmp->data(Qt::UserRole).toDateTime().time().toString()) return;
     qDebug() <<"ddl"<<endl;
     QMessageBox::warning(this,QString::fromStdString("快到DDL了!"),QString::fromStdString("快到DDL了！！！"));
-    if(tmp->repeated_times==0){
-        Qt_window *ptr = (Qt_window* ) parentWidget();
-        ptr->todoTask.pop();
+    if(tmp_->period==0){
+        ui->taskList->removeItemWidget(ui->taskList->item(1));
+        todoTask.pop();
     }
     else{
-        tmp->repeated_times--;
+        myListWidgetItem * item = new myListWidgetItem(tmp_->taskName,QDateTime(tmp_->ddl_date.addDays(tmp_->period),tmp_->ddl_time));
 
+        ui->taskList->removeItemWidget(ui->taskList->item(1));
+        ui->taskList->addItem(item);
+         todoTask.pop();
+         ui->taskList->sortItems();
+         delete item;
     }
+
+    delete tmp_;
+    delete tmp;
 }
 
 void Qt_window::SetMyAppAutoRun(bool isstart)

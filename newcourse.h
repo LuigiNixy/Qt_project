@@ -12,7 +12,7 @@ class newCourse : public QDialog
     Q_OBJECT
 
 public:
-    explicit newCourse(QWidget *parent = 0);
+    explicit newCourse(QWidget *parent = 0,int x = -1,int y = -1);
     ~newCourse();
 
 private:

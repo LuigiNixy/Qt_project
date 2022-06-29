@@ -5,11 +5,17 @@
 #include <QDebug>
 
 using namespace std;
-newCourse::newCourse(QWidget *parent) :
+newCourse::newCourse(QWidget *parent,int x,int y) :
     QDialog(parent),
     ui(new Ui::newCourse)
 {
     ui->setupUi(this);
+
+    if(x!=-1&&y!=-1){
+        ui->Dates->setCurrentIndex(y);
+        ui->startTime->setTime(QTime(x+6,0));
+        ui->endTime->setTime(QTime(x+7,0));
+    }
     ui->startTime->setMinimumTime(QTime::fromString("6:00","h:mm"));
     ui->endTime->setMinimumTime(QTime::fromString("6:00","h:mm"));
     connect(ui->courseCancel,&QPushButton::clicked,this,[=](){
@@ -47,11 +53,6 @@ newCourse::newCourse(QWidget *parent) :
        this->close();
 
     });
-
-
-
-
-
 
 }
 

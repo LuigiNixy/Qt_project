@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     task.cpp \
     newtask.cpp \
     newcourse.cpp \
-    course.cpp
+    course.cpp \
+    mylistwidgetitem.cpp
 
 HEADERS  += qt_window.h \
     task.h \
     newtask.h \
     newcourse.h \
-    course.h
+    course.h \
+    mylistwidgetitem.h
 
 FORMS    += qt_window.ui \
     newtask.ui \

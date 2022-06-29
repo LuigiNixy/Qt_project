@@ -14,8 +14,7 @@ task::task(string Name_, QDate date_, QTime time_,int t){
     ddl_date =date_;
     ddl_time =time_;
     setAlarm(1);
-    period=0;
-    repeated_times=1;
+    period=t;
 
 }/*
 bool task::operator <(task a,task b)*/
