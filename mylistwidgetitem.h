@@ -17,6 +17,8 @@ public:
     myListWidgetItem(string name_,QDateTime time_);
     bool operator <(const QListWidgetItem &other) const;
     bool isTask;
+private slots:
+    void receiveDate(QDateTime);
 };
 
 #endif // MYLISTWIDGETITEM_H

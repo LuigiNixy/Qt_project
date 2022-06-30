@@ -6,44 +6,46 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1490</width>
-    <height>1001</height>
+    <width>1258</width>
+    <height>701</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Qt_window</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTableWidget" name="schedule">
-    <property name="geometry">
-     <rect>
-      <x>-10</x>
-      <y>-10</y>
-      <width>1441</width>
-      <height>701</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="taskList">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>690</y>
-      <width>941</width>
-      <height>241</height>
-     </rect>
-    </property>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableWidget" name="schedule">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="taskList">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1490</width>
+     <width>1258</width>
      <height>17</height>
     </rect>
    </property>
@@ -54,13 +56,7 @@
     <addaction name="actionNew_task"/>
     <addaction name="actionNew_course"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>编辑</string>
-    </property>
-   </widget>
    <addaction name="menu"/>
-   <addaction name="menu_2"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -91,6 +87,11 @@
   <action name="actionNew_course">
    <property name="text">
     <string>new course</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Adobe Gurmukhi</family>
+    </font>
    </property>
   </action>
  </widget>

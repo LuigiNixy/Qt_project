@@ -10,7 +10,7 @@ newCourse::newCourse(QWidget *parent,int x,int y) :
     ui(new Ui::newCourse)
 {
     ui->setupUi(this);
-
+    this->setWindowTitle(tr("新建课程"));
     if(x!=-1&&y!=-1){
         ui->Dates->setCurrentIndex(y);
         ui->startTime->setTime(QTime(x+6,0));
@@ -45,7 +45,7 @@ newCourse::newCourse(QWidget *parent,int x,int y) :
 
        Qt_window * prt= (Qt_window*) parentWidget();
 
-        course* tmp = new course(courseName.toStdString(),courseDate,startTime,endTime);
+        course* tmp = new course(courseName.toStdString(),courseDate,startTime,endTime,classroom.toStdString(),teacherName.toStdString());
        prt->todoCourse.push(tmp);
 
        prt->addCourse(tmp);

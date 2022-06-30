@@ -11,7 +11,7 @@ myListWidgetItem::myListWidgetItem()
 }
 
 myListWidgetItem::myListWidgetItem(string name_, QDateTime time_){
-    setTextAlignment(Qt::AlignAbsolute);
+    setTextAlignment(Qt::AlignCenter);
     taskName = name_;
     taskTime = time_;
 }
@@ -23,4 +23,9 @@ bool myListWidgetItem::operator <(const QListWidgetItem &other)const{
     b = other.data(Qt::UserRole).toDateTime();
     return a<b;
 
+}
+
+void myListWidgetItem::receiveDate(QDateTime tmp){
+    taskTime = tmp;
+    return;
 }

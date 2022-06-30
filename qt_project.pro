@@ -18,15 +18,27 @@ SOURCES += main.cpp\
     newtask.cpp \
     newcourse.cpp \
     course.cpp \
-    mylistwidgetitem.cpp
+    mylistwidgetitem.cpp \
+    timeedie.cpp \
+    sign_in.cpp \
+    sign_up_dialog.cpp
 
 HEADERS  += qt_window.h \
     task.h \
     newtask.h \
     newcourse.h \
     course.h \
-    mylistwidgetitem.h
+    mylistwidgetitem.h \
+    timeedie.h \
+    sign_in.h \
+    sign_up_dialog.h
 
 FORMS    += qt_window.ui \
     newtask.ui \
-    newcourse.ui
+    newcourse.ui \
+    timeedie.ui \
+    sign_in.ui \
+    sign_up_dialog.ui
+
+RESOURCES += \
+    sign_in_image.qrc

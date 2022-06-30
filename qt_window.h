@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 #include <QTime>
 #include <QTimer>
+#include <QMenu>
 using namespace std;
 namespace Ui {
 class Qt_window;
@@ -29,9 +30,14 @@ public:
     void SetMyAppAutoRun(bool);
 public slots:
     void getDateTime();
+private slots:
+    void receiveDate(QDateTime);
 
+    void on_schedule_customContextMenuRequested(const QPoint &pos);
 
+    void on_taskList_customContextMenuRequested(const QPoint &pos);
 
+    void widgetClose();
 private:
     Ui::Qt_window *ui;
 };
