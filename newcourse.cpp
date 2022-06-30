@@ -39,7 +39,7 @@ newCourse::newCourse(QWidget *parent,int x,int y) :
 
 
         int courseDate = ui->Dates->currentIndex();
-        qDebug()<<courseDate<<endl;
+
         QTime startTime = ui->startTime->time();
         QTime endTime = ui->endTime->time();
 

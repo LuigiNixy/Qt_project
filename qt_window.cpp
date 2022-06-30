@@ -250,7 +250,7 @@ void Qt_window::getDateTime(){
     if(curDate!=tmp->data(Qt::UserRole).toDateTime().date().toString()) return;
 //    qDebug() <<tmp->ddl_time<<endl;
     if(curTime!=tmp->data(Qt::UserRole).toDateTime().time().toString()) return;
-    qDebug() <<"ddl"<<endl;
+//    qDebug() <<"ddl"<<endl;
     QMessageBox::warning(this,QString::fromStdString("快到DDL了!"),QString::fromStdString("快到DDL了！！！"));
     if(tmp_->period==0){
         ui->taskList->removeItemWidget(ui->taskList->item(0));
@@ -368,6 +368,7 @@ void Qt_window::receiveDate(QDateTime tmp){
 
 void Qt_window::widgetClose(){
     ui->setupUi(this);
+    return;
 }
 
 
