@@ -184,7 +184,7 @@ void Qt_window::addTask(task* t){
     ui->taskList->setSortingEnabled(true);
 
     myListWidgetItem *item = new myListWidgetItem(t->taskName,QDateTime(t->ddl_date,t->ddl_time));
-    item->setText(QString::fromStdString(t->taskName+" "+t->ddl_date.toString().toStdString()+" "+t->ddl_time.toString().toStdString()));
+    item->setText(QString::fromStdString(t->taskName+" "+t->ddl_date.toString("yyyy年MM月dd日").toStdString()+" "+t->ddl_time.toString().toStdString()));
     item->setData(Qt::UserRole,QDateTime(t->ddl_date,t->ddl_time));
 
     ui->taskList->addItem(item);
